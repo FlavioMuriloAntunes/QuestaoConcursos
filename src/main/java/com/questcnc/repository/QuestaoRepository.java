@@ -1,6 +1,6 @@
-package repository;
+package com.questcnc.repository;
 
-import model.Questao;
+import com.questcnc.model.Questao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

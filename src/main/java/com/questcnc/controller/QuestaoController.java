@@ -1,16 +1,12 @@
-package controller;
+package com.questcnc.controller;
 
-import dto.Response.QuestaoResponseDTO;
-import dto.Response.RespostaResponseDTO;
-import dto.request.RespostaRequestDTO;
-import service.QuestaoService;
+import com.questcnc.dto.Response.QuestaoResponseDTO;
+import com.questcnc.dto.Response.RespostaResponseDTO;
+import com.questcnc.dto.request.RespostaRequestDTO;
+import com.questcnc.service.QuestaoService;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,5 +34,11 @@ public class QuestaoController {
 
         RespostaResponseDTO resposta = service.responder(dto);
         return ResponseEntity.ok(resposta);
+    }
+
+    // 3️⃣ POST SIMPLES PARA TESTE
+    @PostMapping("/teste")
+    public ResponseEntity<String> testePost() {
+        return ResponseEntity.ok("POST funcionando corretamente!");
     }
 }

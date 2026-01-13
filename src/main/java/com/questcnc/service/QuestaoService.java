@@ -1,8 +1,8 @@
-package service;
+package com.questcnc.service;
 
-import dto.Response.QuestaoResponseDTO;
-import dto.Response.RespostaResponseDTO;
-import dto.request.RespostaRequestDTO;
+import com.questcnc.dto.Response.QuestaoResponseDTO;
+import com.questcnc.dto.Response.RespostaResponseDTO;
+import com.questcnc.dto.request.RespostaRequestDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

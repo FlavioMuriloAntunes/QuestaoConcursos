@@ -1,5 +1,4 @@
-package dto.request;
-
+package com.questcnc.dto.request;
 public class RespostaRequestDTO {
 
     private Long questaoId;

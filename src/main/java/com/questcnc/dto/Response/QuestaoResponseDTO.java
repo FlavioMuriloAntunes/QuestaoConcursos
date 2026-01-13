@@ -1,4 +1,4 @@
-package dto.Response;
+package com.questcnc.dto.Response;
 
 import java.util.List;
 
@@ -11,7 +11,8 @@ public class QuestaoResponseDTO {
     public QuestaoResponseDTO() {
     }
 
-    public QuestaoResponseDTO(Long id, String enunciado,
+    public QuestaoResponseDTO(Long id,
+                              String enunciado,
                               List<AlternativaResponseDTO> alternativas) {
         this.id = id;
         this.enunciado = enunciado;

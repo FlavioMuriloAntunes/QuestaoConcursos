@@ -1,4 +1,4 @@
-package dto.Response;
+package com.questcnc.dto.Response;
 
 public class RespostaResponseDTO {
 

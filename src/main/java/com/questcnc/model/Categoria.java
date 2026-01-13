@@ -1,4 +1,4 @@
-package model;
+package com.questcnc.model;
 
 import jakarta.persistence.*;
 import java.util.List;

@@ -2,16 +2,18 @@ package com.questcnc.controller;
 
 import com.questcnc.dto.Response.QuestaoResponseDTO;
 import com.questcnc.dto.Response.RespostaResponseDTO;
+import com.questcnc.dto.request.QuestaoRequestDTO;
 import com.questcnc.dto.request.RespostaRequestDTO;
 import com.questcnc.service.QuestaoService;
-
+import jakarta.validation.Valid; // Se der erro, use javax.validation.Valid
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/questoes")
+@RequestMapping("/questoes") // 👈 Define a URL base
 public class QuestaoController {
 
     private final QuestaoService service;
@@ -20,25 +22,23 @@ public class QuestaoController {
         this.service = service;
     }
 
-    // 1️⃣ Listar todas as questões
+    // 1. LISTAR (GET) -> http://localhost:8080/questoes
     @GetMapping
-    public ResponseEntity<List<QuestaoResponseDTO>> listarQuestoes() {
-        List<QuestaoResponseDTO> questoes = service.listarQuestoes();
-        return ResponseEntity.ok(questoes);
+    public ResponseEntity<List<QuestaoResponseDTO>> listar() {
+        return ResponseEntity.ok(service.listarQuestoes());
     }
 
-    // 2️⃣ Receber a resposta do usuário
+    // 2. CRIAR (POST) -> http://localhost:8080/questoes
+    @PostMapping
+    public ResponseEntity<QuestaoResponseDTO> criar(@RequestBody @Valid QuestaoRequestDTO dto) {
+        QuestaoResponseDTO novaQuestao = service.criar(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novaQuestao);
+    }
+
+    // 3. RESPONDER (POST) -> http://localhost:8080/questoes/responder
+    
     @PostMapping("/responder")
-    public ResponseEntity<RespostaResponseDTO> responder(
-            @RequestBody RespostaRequestDTO dto) {
-
-        RespostaResponseDTO resposta = service.responder(dto);
-        return ResponseEntity.ok(resposta);
-    }
-
-    // 3️⃣ POST SIMPLES PARA TESTE
-    @PostMapping("/teste")
-    public ResponseEntity<String> testePost() {
-        return ResponseEntity.ok("POST funcionando corretamente!");
+    public ResponseEntity<RespostaResponseDTO> responder(@RequestBody @Valid RespostaRequestDTO dto) {
+        return ResponseEntity.ok(service.responder(dto));
     }
 }

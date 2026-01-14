@@ -16,7 +16,7 @@ public class Questao {
     private String enunciado;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id", nullable = false)
+    @JoinColumn(name = "categoria_id", nullable = true)
     private Categoria categoria;
 
     @OneToMany(
